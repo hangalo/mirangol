@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Novo Projeto</title>
+    </h:head>
+    <h:body>
+
+        <f:view>
+            <h:form>
+                <h:form id="frmNovoProjeto">
+                   
+                    <h:outputText id="titulo" value="Registar Novo Projeto" style="font-weight: bold;"/>
+                  
+                    <h:panelGrid id="dados" columns="2">
+
+                        <h:outputLabel value="Código:" for="codigo"/>
+                        <h:inputText id="codigo" label="Código" value="#{projetoMBean.projeto.codigoProjeto}" maxlength="50"/>
+
+
+                        <h:outputLabel value="Nome:"/>
+                        <h:inputText id="nome" label="Nome" value="#{projetoMBean.projeto.nomeProjeto}" maxlength="40"/>
+
+
+                        <h:outputLabel value="Tipo:"/>
+                        <h:selectOneMenu value="#{projetoMBean.projeto.tipoProjeto}" converter="tipoProjetoConverter">
+                            <f:selectItem itemLabel="== Selecionar tipo ==" itemValue="#{null}" noSelectionOption="true"/>
+                            <f:selectItems value="#{projetoMBean.listaTipoProjetos}" var="tipo" itemValue="#{tipo}" itemLabel="#{tipo.nomeTipoProjeto}"/>
+                        </h:selectOneMenu>
+
+
+                        <h:outputLabel value="Descrição:"/>
+                        <h:inputTextarea id="descricao" label="Descrição:" value="#{projetoMBean.projeto.descricaoProjeto}" cols="30" rows="10" />
+
+
+
+                        <h:outputLabel value="Financiamento:"/>
+                        <h:inputText id="financiamento" label="Financiamento:" value="#{projetoMBean.projeto.entidadeFinanciadora}" maxlength="50"/>
+
+                        <h:outputLabel value="Custo:"/>
+                        <h:inputText id="custo" label="Custo" value="#{projetoMBean.projeto.custoProjeto}"/>
+
+                    </h:panelGrid>
+                    
+                    <h:commandButton id="guardar" value="Guardar" actionListener="#{projetoMBean.save}"/>
+                    
+                </h:form>
+
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

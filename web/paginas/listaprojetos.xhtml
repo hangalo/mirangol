@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Listagem dos projetos</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+            <h:outputText id="titulo" value="Listagem dos Projetos" style="font-weight: bold;"/>
+
+            <h:form>
+
+                <h:dataTable id="listaProjetos" var="item" value="#{projetoMBean.listaProjetos}" border="1">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Código:"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.codigoProjeto}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Nome"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.nomeProjeto}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Descrição"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.descricaoProjeto}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Tipo"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.tipoProjeto}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Financiamento"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.entidadeFinanciadora}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Custo"/>                                    
+                        </f:facet>
+                        <h:outputText value="#{item.custoProjeto}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Operações"/>                                    
+                        </f:facet>
+                        <h:commandButton value="Eliminar" action="#{projetoMBean.delete}">
+                            <f:setPropertyActionListener target="#{projetoMBean.projeto}" value="#{item}"/>
+                        </h:commandButton>
+                        <h:commandButton value="Editar" action="#{projetoMBean.startEdit}">
+                            <f:setPropertyActionListener target="#{projetoMBean.projeto}" value="#{item}"/>
+                        </h:commandButton>
+                    </h:column>
+
+                </h:dataTable>
+
+            </h:form>
+
+        </f:view>
+
+
+    </h:body>
+</html>
+
