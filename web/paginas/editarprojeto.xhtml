@@ -4,14 +4,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Editar Projeto</title>
+        <title>Editar Categoria de Funcionario</title>
     </h:head>
     <h:body>
 
         <f:view>
             <h:form>
                 <h:form id="frmEditarProjeto">
-                    <h:outputText id="titulo" value="Editar dados do Projeto" style="font-weight: bold;"/>
+                    <h:outputText id="titulo" value="Editar dados da Categoria" style="font-weight: bold;"/>
                     <h:panelGrid id="dados" columns="2">
 
                         <h:outputLabel value="Código:" for="codigo"/>
@@ -43,6 +43,7 @@
 
                     </h:panelGrid>
                     <h:commandButton id="guardar" value="Guardar" action="#{projetoMBean.edit}"/>
+                     <h:commandButton id="home" value="Home" action="/index"/>
                     
                 </h:form>
 
