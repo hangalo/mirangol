@@ -6,6 +6,7 @@
 package org.ao.mirangol.controlo;
 
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
@@ -14,24 +15,28 @@ import org.ao.mirangol.dao.TipoProjetoDAO;
 import org.ao.mirangol.modelo.Projeto;
 import org.ao.mirangol.modelo.TipoProjeto;
 
-/**
- *
- * @author informatica
- */
+
 @Named(value = "projetoMBean")
 @RequestScoped
 public class ProjetoMBean {
 
     private Projeto projeto;
-    private ProjetoDAO projetoDAO = new ProjetoDAO();
-    private TipoProjetoDAO tipoProjetoDAO = new TipoProjetoDAO();
+    private ProjetoDAO projetoDAO;
+    private TipoProjetoDAO tipoProjetoDAO;
     private List<Projeto> projetos;
     private List<TipoProjeto> tipoProjetos;
 
     public ProjetoMBean() {
-        projeto = new Projeto();
+       
     }
 
+    @PostConstruct
+    public void inicializar() {
+         projeto = new Projeto();
+       projetoDAO = new ProjetoDAO();
+       tipoProjetoDAO = new TipoProjetoDAO();
+    }
+    
     public Projeto getProjeto() {
         return projeto;
     }

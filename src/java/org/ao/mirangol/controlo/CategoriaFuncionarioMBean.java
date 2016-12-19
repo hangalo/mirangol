@@ -14,17 +14,10 @@ import javax.faces.event.ActionEvent;
 import org.ao.mirangol.dao.CategoriaFuncionarioDAO;
 import org.ao.mirangol.modelo.CategoriaFuncionario;
 
-/**
- *
- * @author informatica
- */
 @Named(value = "categoriaFuncionarioMBean")
 @SessionScoped
 public class CategoriaFuncionarioMBean implements Serializable {
 
-    /**
-     * Creates a new instance of CategoriaFuncionarioMBean
-     */
     private CategoriaFuncionario categoria;
     private CategoriaFuncionarioDAO categoriaDAO;
     private List<CategoriaFuncionario> categorias;
