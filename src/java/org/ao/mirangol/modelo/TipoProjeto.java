@@ -13,8 +13,10 @@ import java.util.Objects;
  * @author informatica
  */
 public class TipoProjeto implements Serializable{
-     private Integer idTipoProjeto;
+    private Integer idTipoProjeto;
     private String nomeTipoProjeto;
+    private byte[] imagemTipoProjeto;
+    private String ficheiroImagemProjeto;
 
     public TipoProjeto() {
     }
@@ -34,6 +36,25 @@ public class TipoProjeto implements Serializable{
     public void setNomeTipoProjeto(String nomeTipoProjeto) {
         this.nomeTipoProjeto = nomeTipoProjeto;
     }
+
+    public byte[] getImagemTipoProjeto() {
+        return imagemTipoProjeto;
+    }
+
+    public void setImagemTipoProjeto(byte[] imagemTipoProjeto) {
+        this.imagemTipoProjeto = imagemTipoProjeto;
+    }
+
+    public String getFicheiroImagemProjeto() {
+        return ficheiroImagemProjeto;
+    }
+
+    public void setFicheiroImagemProjeto(String ficheiroImagemProjeto) {
+        this.ficheiroImagemProjeto = ficheiroImagemProjeto;
+    }
+    
+    
+    
 
     @Override
     public int hashCode() {

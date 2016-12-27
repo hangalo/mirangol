@@ -19,11 +19,11 @@ import org.ao.mirangol.util.Conexao;
  * @author informatica
  */
 public class TipoProjetoDAO implements GenericoDAO<TipoProjeto>{
-    private static final String INSERIR = "INSERT INTO tipo_projeto (nome_tipo_projeto) VALUES(?)";
+    private static final String INSERIR = "INSERT INTO tipo_projeto (nome_tipo_projeto, imagem_tipo_projeto, ficheiro_imagem_tipo_projeto) VALUES(?, ?, ?)";
     private static final String ACTUALIZAR = "UPDATE tipo_projeto SET nome_tipo_projeto =? WHERE id_tipo_projeto =?";
     private static final String ELIMINAR = "DELETE FROM tipo_projeto WHERE id_tipo_projeto =?";
-    private static final String BUSCAR_POR_CODIGO = "SELECT id_tipo_projeto, nome_tipo_projeto FROM tipo_projeto WHERE id_tipo_projeto = ?";
-    private static final String LISTAR_TUDO = "SELECT id_tipo_projeto, nome_tipo_projeto FROM tipo_projeto";
+    private static final String BUSCAR_POR_CODIGO = "SELECT id_tipo_projeto, nome_tipo_projeto, imagem_tipo_projeto, ficheiro_imagem_tipo_projeto FROM tipo_projeto WHERE id_tipo_projeto = ?";
+    private static final String LISTAR_TUDO = "SELECT id_tipo_projeto, nome_tipo_projeto, imagem_tipo_projeto, ficheiro_imagem_tipo_projeto FROM tipo_projeto";
 
 
     public TipoProjetoDAO() {

@@ -19,6 +19,8 @@ public class Projeto implements Serializable{
     private String descricaoProjeto;
     private Double custoProjeto;
     private String entidadeFinanciadora;
+    private byte[] imagemProjeto;
+    private String ficheiroImagemProjecto;
     private TipoProjeto tipoProjeto;
 
     public Projeto() {

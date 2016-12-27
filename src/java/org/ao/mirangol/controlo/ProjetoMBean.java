@@ -45,13 +45,7 @@ public class ProjetoMBean {
         this.projeto = projeto;
     }
 
-    public ProjetoDAO getProjetoDAO() {
-        return projetoDAO;
-    }
-
-    public void setProjetoDAO(ProjetoDAO projetoDAO) {
-        this.projetoDAO = projetoDAO;
-    }
+   
 
     public String newSave() {
         projeto = new Projeto();
