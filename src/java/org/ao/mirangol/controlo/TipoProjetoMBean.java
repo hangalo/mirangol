@@ -95,7 +95,7 @@ public class TipoProjetoMBean {
             byte[] buffer = new byte[1024 * 1024 * 100];
 
             int length;
-            
+
             // Escreve no stream de saida
             while ((length = in.read(buffer)) > 0) {
                 out.write(buffer, 0, length);
@@ -133,9 +133,7 @@ public class TipoProjetoMBean {
     }
 
     public List<TipoProjeto> getListaTiposProjetos() {
-        if (tipoProjetos == null) {
-            tipoProjetos = tipoProjetoDAO.findAll();
-        }
+        tipoProjetos = tipoProjetoDAO.findAll();
         return tipoProjetos;
     }
 

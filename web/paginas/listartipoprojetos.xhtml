@@ -1,12 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Lista tipo de Projetos</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{tipoProjetoMBean.listaTiposProjetos}" var="item">
+                    
+                    <f:facet name="caption">
+                        <h3> Listagem dos tipos de Projetos</h3>
+                    </f:facet>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Id:"/>                                    
+                        </f:facet>
+                         <h:outputText value="#{item.idTipoProjeto}"/>
+                    </h:column>
+                    
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Tipo"/>                                    
+                        </f:facet>
+                         <h:outputText value="#{item.nomeTipoProjeto}"/>
+                    </h:column>
+                    
+                    <f:facet name="footer">
+                        <h6 style="text-align: center">Mirangol</h6>
+                    </f:facet>
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+        
     </h:body>
 </html>
 

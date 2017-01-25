@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registo de um novo fundador</title>
+    </h:head>
+    <h:body>
+        <h:form id="novofundador">
+            <h:panelGrid columns="2">
+                <f:facet name="header">
+                    Registo de novo fundador
+                </f:facet>
+
+                <h:outputLabel value="Nome:"/>
+                <h:inputText value="" size="60"/>
+                <h:outputLabel value="Sobrenome"/>
+                <h:inputText value="" size="60"/>
+                <h:outputLabel value="Movel"/>
+                <h:inputText value=""/>
+                <h:outputLabel value="Email"/>
+                <h:inputText value=""/>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Endereço:"/>
+                <h:panelGroup>
+                    <h:panelGrid columns="6">
+                        <h:outputLabel value="Bairro"/>
+                        <h:inputText value=""/>
+                        <h:outputLabel value="Rua"/>
+                        <h:inputText value="" size="6"/>
+                        <h:outputLabel value="Casa"/>
+                        <h:inputText value="" size="6"/>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:panelGrid>
+            <h:commandButton id="guardar" value="Guardar" />
+        </h:form>
+
+    </h:body>
+</html>
+
