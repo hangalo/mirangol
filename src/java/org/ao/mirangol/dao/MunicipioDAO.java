@@ -25,6 +25,9 @@ private static final String INSERIR = "INSERT INTO municipio(nome_municipio, id_
     private static final String ELIMINAR = "DELETE FROM municipio WHERE id_municipio = ?";
     private static final String BUSCAR_POR_CODIGO = "SELECT m.id_municipio, m.nome_municipio,p.nome_provincia FROM municipio m INNER JOIN provincia p ON m.id_provincia=p.id_provincia WHERE id_municipio =?";
     private static final String LISTAR_TUDO = "SELECT m.id_municipio, m.nome_municipio, p.nome_provincia FROM municipio m INNER JOIN provincia p ON m.id_provincia=p.id_provincia";
+    
+      private static final String BUSCAR_POR_PROVINCIA = "SELECT  m.id_municipio, m.nome_municipio,p.nome_provincia FROM municipio m INNER JOIN provincia p ON m.id_provincia=p.id_provincia WHERE p.nome_provincia =?";
+    
 
 
     public MunicipioDAO() {
@@ -121,13 +124,14 @@ private static final String INSERIR = "INSERT INTO municipio(nome_municipio, id_
 
     @Override
     public List<Municipio> findAll() {
-         PreparedStatement ps = null;
+        PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
         List<Municipio> municipios = new ArrayList<>();
         try {
             conn =  Conexao.getConnection();
             ps = conn.prepareStatement(LISTAR_TUDO);
+            
             rs = ps.executeQuery();
             while (rs.next()) {
                 Municipio municipio = new Municipio();
@@ -144,6 +148,36 @@ private static final String INSERIR = "INSERT INTO municipio(nome_municipio, id_
     }
     
     
+    public List<Municipio> buscaMunicipiosPorProvincia(String provincia) {
+    
+    PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<Municipio> municipios = new ArrayList<>();
+        try {
+            conn =  Conexao.getConnection();
+            ps = conn.prepareStatement(BUSCAR_POR_PROVINCIA);
+            ps.setString(1, provincia);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Municipio municipio = new Municipio();
+                popularComDados(municipio, rs);
+                municipios.add(municipio);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Erro ao ler dados: " + ex.getLocalizedMessage());
+        } finally {
+            Conexao.closeConnection(conn);
+        }
+        return municipios;
+    
+    }
+    
+    
+    
+    
      private void popularComDados(Municipio municipio, ResultSet rs) {
         try {
             municipio.setIdMunicipio(rs.getInt("m.id_municipio"));
@@ -157,4 +191,6 @@ private static final String INSERIR = "INSERT INTO municipio(nome_municipio, id_
         }
     }
     
+     
+     
 }

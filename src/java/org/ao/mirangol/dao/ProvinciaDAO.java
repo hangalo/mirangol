@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.ao.mirangol.modelo.Municipio;
 import org.ao.mirangol.modelo.Provincia;
 import org.ao.mirangol.util.Conexao;
 
@@ -25,7 +26,7 @@ public class ProvinciaDAO implements GenericoDAO<Provincia>{
     private static final String ELIMINAR = "DELETE FROM provincia WHERE id_provincia = ?";
     private static final String BUSCAR_POR_CODIGO = "SELECT id_provincia, nome_provincia FROM provincia WHERE id_provincia =?";
     private static final String LISTAR_TUDO = "SELECT id_provincia, nome_provincia FROM provincia";
- 
+    private static final String LISTA_PROVINCIA_MUNICIPIOS="SELECT p.id_provincia, p.nome_provincia, m.nome_municipio  FROM provincia p INNER JOIN municipio m ON p.id_provincia = m.id_provincia;";
 
     public ProvinciaDAO() {
         
@@ -146,6 +147,8 @@ public class ProvinciaDAO implements GenericoDAO<Provincia>{
     }
     
     
+     
+    
     
     private void popularComDados(Provincia provincia, ResultSet rs) {
         try {
@@ -157,5 +160,7 @@ public class ProvinciaDAO implements GenericoDAO<Provincia>{
             System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
         }
     }
+    
+    
     
 }

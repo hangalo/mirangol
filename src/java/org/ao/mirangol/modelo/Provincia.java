@@ -6,6 +6,7 @@
 package org.ao.mirangol.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Objects;
 public class Provincia implements Serializable{
     private Integer idProvincia;
     private String nomeProvincia;
+    private List<Municipio> municipios;
 
     public Provincia() {
     }
@@ -68,6 +70,14 @@ public class Provincia implements Serializable{
     @Override
     public String toString() {
         return  this.nomeProvincia;
+    }
+
+    public List<Municipio> getMunicipios() {
+        return municipios;
+    }
+
+    public void setMunicipios(List<Municipio> municipios) {
+        this.municipios = municipios;
     }
     
     

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Tipo de Participação</title>
+    </h:head>
+    <h:body>
+
+
+        <table>
+            <caption>Tipo de Participação</caption>
+            <tr>
+                <th> Id </th>
+                <th> Participação </th>
+            </tr>
+
+            <ui:repeat var="tipo" value="#{tipoParticipacaoMBean.tipoParticipacoes}">
+                <tr>
+                    <td>
+                        <h:outputText value="#{tipo.idTipoParticipacao}"/>
+                    </td>
+
+                    <td>
+                        <h:outputText value="#{tipo.tipoParticipacao}"/>
+                    </td>
+                </tr>
+            </ui:repeat>
+
+        </table>
+
+
+        <h3>Tipo Participação</h3>
+        <ul>
+            <ui:repeat value="#{tipoParticipacaoMBean.tipoParticipacoes}" var="tipo" varStatus="metadata">
+                <li style="background-color:#{ (metadata.odd ? 'grey' : 'white')}">
+                    <h:outputText value="#{i18n['index']} #{metadata.index+1}, #{tipo.tipoParticipacao}"/>
+                </li>
+            </ui:repeat>
+        </ul>
+
+    </h:body>
+</html>
+

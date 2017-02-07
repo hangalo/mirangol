@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Provincias e Municipio</title>
+        <h:outputStylesheet library="css" name="table-style.css"/>
+    </h:head>
+    <h:body>
+
+        <h3>Municipios e províncias de Angola</h3>
+        
+            <table class="tabela">
+                <tr>
+                    <th class="tabela-header">Nº</th>
+                    <th class="tabela-header">Municipio</th>
+                    <th class="tabela-header">Provincia</th>
+                </tr>
+                <tbody>
+                    <ui:repeat var="municipio" value="#{municipioMBean.municipios}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                                <th class="tabela-linhas-impares">#{municipio.idMunicipio}</th>
+                                <th class="tabela-linhas-impares">#{municipio.nomeMunicipio}</th>
+                                <th class="tabela-linhas-impares">#{municipio.provincia.nomeProvincia}</th>
+                            </tr>
+                        </h:panelGroup>
+                        
+                         <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                                <th class="tabela-linhas-pares">#{municipio.idMunicipio}</th>
+                                <th class="tabela-linhas-pares">#{municipio.nomeMunicipio}</th>
+                                <th class="tabela-linhas-pares">#{municipio.provincia.nomeProvincia}</th>
+                            </tr>
+                        </h:panelGroup>
+                        
+                    </ui:repeat>
+
+                </tbody>
+            </table>
+
+            <!-- 
+      <ui:repeat var="m" value="{municipioMBean.municipios}" varStatus="estado">
+          <h2>  <li>{m.idMunicipio} || {m.nomeMunicipio} || {m.provincia.nomeProvincia}</li></h2>
+          
+          
+          
+          <ol>
+          
+          <ui:repeat var="m2" value="{municipioMBean.buscaMunicipiosPorProvincia(m.provincia)}">
+              <li>{m2}</li>
+          </ui:repeat>
+                  
+         </ol>
+         
+      </ui:repeat>
+            -->
+       
+
+    </h:body>
+</html>
+
