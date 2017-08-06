@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 public class Colocacao implements Serializable{
     private Integer idColocacao;
-    private Funcionario funcionario;
+    private Fundador funcionario;
     private Projeto projecto;
     private Date dataInicio;
     private Date dataFim;
@@ -35,11 +35,11 @@ public class Colocacao implements Serializable{
         this.idColocacao = idColocacao;
     }
 
-    public Funcionario getFuncionario() {
+    public Fundador getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
+    public void setFuncionario(Fundador funcionario) {
         this.funcionario = funcionario;
     }
 

@@ -5,24 +5,31 @@
  */
 package org.ao.mirangol.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author informatica
  */
 public class Participante {
+
     private Integer idParticipanete;
     private String nomeParticipante;
-    private Municipio municipio;
+    private String sobrenomeParticipante;
     private Sexo sexo;
+    private Date dataNascimento;
+    private Municipio municipio;
 
     public Participante() {
     }
 
-    public Participante(Integer idParticipanete, String nomeParticipante, Municipio municipio, Sexo sexo) {
+    public Participante(Integer idParticipanete, String nomeParticipante, String sobrenomeParticipante, Sexo sexo, Date dataNascimento, Municipio municipio) {
         this.idParticipanete = idParticipanete;
         this.nomeParticipante = nomeParticipante;
-        this.municipio = municipio;
+        this.sobrenomeParticipante = sobrenomeParticipante;
         this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+        this.municipio = municipio;
     }
 
     public Integer getIdParticipanete() {
@@ -41,12 +48,12 @@ public class Participante {
         this.nomeParticipante = nomeParticipante;
     }
 
-    public Municipio getMunicipio() {
-        return municipio;
+    public String getSobrenomeParticipante() {
+        return sobrenomeParticipante;
     }
 
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
+    public void setSobrenomeParticipante(String sobrenomeParticipante) {
+        this.sobrenomeParticipante = sobrenomeParticipante;
     }
 
     public Sexo getSexo() {
@@ -56,5 +63,28 @@ public class Participante {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+
+    @Override
+    public String toString() {
+        return "Participante{" + "nomeParticipante=" + nomeParticipante + ", sobrenomeParticipante=" + sobrenomeParticipante + '}';
+    }
+
+   
     
 }
