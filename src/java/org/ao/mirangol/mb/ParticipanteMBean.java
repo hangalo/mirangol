@@ -5,9 +5,12 @@
  */
 package org.ao.mirangol.mb;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +23,6 @@ import org.ao.mirangol.dao.ParticipanteDAO;
 import org.ao.mirangol.modelo.Municipio;
 import org.ao.mirangol.modelo.Participante;
 import org.ao.mirangol.modelo.Sexo;
-
 
 /**
  *
@@ -65,11 +67,10 @@ public class ParticipanteMBean {
         this.sexos = sexos;
     }
 
-     public Sexo[] getGeneros()
-    {
+    public Sexo[] getGeneros() {
         return Sexo.values();
     }
-     
+
     public List<SelectItem> getOpSexos() {
         List<SelectItem> list = new ArrayList<>();
         for (Sexo sexo : Sexo.values()) {
@@ -85,32 +86,37 @@ public class ParticipanteMBean {
         return municipios;
     }
 
-     public String newSave() {
+    public String newSave() {
         participante = new Participante();
-        return "/paginas/participante_guardar";
+        return "/paginas/participante_guardar?faces-redirect=true";
     }
 
     public void save(ActionEvent event) {
-       participanteDAO.save(participante);
+        participanteDAO.save(participante);
         participante = new Participante();
-          FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Dados guardados com sucesso!"));
     }
-    
+
     public String startEdit() {
-        return "/paginas/participante_editar";
+        return "/paginas/participante_editar?faces-redirect=true";
     }
 
-    public String edit() {
+    public void edit(ActionEvent event) {
         participanteDAO.update(participante);
         participantes = null;
-        return "participante_listar";
+        try {
+         FacesContext.getCurrentInstance().getExternalContext().redirect("participante_listar.jsf");
+        } catch (IOException ex) {
+            Logger.getLogger(ParticipanteMBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       // return "";
     }
 
     public String delete() {
         participanteDAO.delete(participante);
         participantes = null;
-        return "participante_listar";
+        return "/paginas/participante_listar?faces-redirect=true";
     }
 
     public List<Participante> getListaParticipantes() {

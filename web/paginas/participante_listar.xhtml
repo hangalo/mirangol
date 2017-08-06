@@ -63,12 +63,14 @@
                         <f:facet name="header">
                             <h:outputLabel value="Operações"/>                                    
                         </f:facet>
-                        <h:commandButton value="Eliminar" action="#{participanteMBean.delete}">
+                        <h:commandLink  action="#{participanteMBean.delete}">
+                            <h:graphicImage library="imagens" name="delete.png"/>
                             <f:setPropertyActionListener target="#{participanteMBean.participante}" value="#{item}"/>
-                        </h:commandButton>
-                        <h:commandButton value="Editar" action="#{participanteMBean.startEdit}">
+                        </h:commandLink>
+                        <h:commandLink action="#{participanteMBean.startEdit}">
+                            <h:graphicImage library="imagens" name="edit.png"/>
                             <f:setPropertyActionListener target="#{participanteMBean.participante}" value="#{item}"/>
-                        </h:commandButton>
+                        </h:commandLink>
                     </h:column>
 
                 </h:dataTable>
